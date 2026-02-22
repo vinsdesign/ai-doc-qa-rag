@@ -8,15 +8,16 @@ datasource db {
 }
 
 model Document {
-  id        String    @id @default(cuid())
-  title     String
-  fileUrl   String
-  status    DocStatus @default(UPLOADED)
+  id            String    @id @default(cuid())
+  title         String
+  fileUrl       String
+  blobPathname  String?
+  status        DocStatus @default(UPLOADED)
 
-  chunks    DocumentChunk[]
+  chunks        DocumentChunk[]
 
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 
   @@index([status])
   @@index([createdAt])
